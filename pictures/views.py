@@ -6,6 +6,6 @@ class PageList(ListView):
     model = Page
     template_name = "page_list.html"
 
-    # def get_context_data(self, **kwargs):
-    #     context = Page.objects.all()
-    #     return context
+class PageDetail(DetailView):
+    model = Page
+    template_name = "page_detail.html"

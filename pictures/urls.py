@@ -3,14 +3,14 @@ from django.conf import settings
 from django.conf.urls import include
 from django.conf.urls.static import static
 
-from .views import PageList
+from .views import PageList, PageDetail
 
 app_name = 'pictures'
 
 # Apps views
 apps_urls = [
     path('', PageList.as_view(), name='page-list'),
-    # path('<slug:project_dir>/edit/', PageDetailView.as_view(), name='page-detail-view'),
+    path('<int:pk>/', PageDetail.as_view(), name='page-detail'),
 ]
 
 # Views index
