@@ -25,12 +25,15 @@ SECRET_KEY = ')a==te3bw6-t-0$x&vajq&e#3a)&rfk7_74pu$(2(lrv!(g7_c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'pictures.apps.PicturesConfig',
+
+    # 'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,3 +121,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Media files (Images, Audio, Video in DB)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/media/')
+MEDIA_URL = '/media/'
