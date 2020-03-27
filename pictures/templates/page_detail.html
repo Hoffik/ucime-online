@@ -11,41 +11,41 @@
 </a>
 
 <div class="w3-row-padding">
-    <div class="w3-third">
-        <div class="w3-card-4">
+    <div class="w3-quarter">
+        <div class="w3-card-4" id="picture1" style="cursor: pointer;">
             <img src="{{ object.picture1.url }}" class="w3-image">
-            <div class="w3-container w3-center">
+            <div class="w3-container w3-center" id="text1" style="visibility: hidden;">
                 <p>{{ object.text1 }}</p>
             </div>
         </div>
     </div>
-    <div class="w3-third">
-        <div class="w3-card-4">
+    <div class="w3-quarter">
+        <div class="w3-card-4" id="picture2" style="cursor: pointer;">
+            <img src="{{ object.picture2.url }}" class="w3-image">
+            <div class="w3-container w3-center" id="text2" style="visibility: hidden;">
+                <p>{{ object.text2 }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="w3-quarter">
+        <div class="w3-card-4" id="picture3" style="cursor: pointer;">
             <img src="{{ object.picture3.url }}" class="w3-image">
-            <div class="w3-container w3-center">
+            <div class="w3-container w3-center" id="text3" style="visibility: hidden;">
                 <p>{{ object.text3 }}</p>
             </div>
         </div>
     </div>
-    <div class="w3-third">
-        <div class="w3-card-4">
+    <div class="w3-quarter">
+        <div class="w3-card-4" id="picture4" style="cursor: pointer;">
             <img src="{{ object.picture4.url }}" class="w3-image">
-            <div class="w3-container w3-center">
+            <div class="w3-container w3-center" id="text4" style="visibility: hidden;">
                 <p>{{ object.text4 }}</p>
             </div>
         </div>
     </div>
 </div>
 
-{% comment %} <div class="img-container">
-    <img src="{{ object.picture1.url }}" style="width:100%">
-    <div class="img-text">
-        <p>{{ object.text1 }}</p>
-    </div>
-</div>
-
-<p>{{ object.text2 }}</p>
-<p>{{ object.text3 }}</p>
-<p>{{ object.text4 }}</p> {% endcomment %}
+{% load static %}
+<script src="{% static 'script.js' %}"></script>
 
 {% endblock %}
