@@ -4,9 +4,9 @@ class Page(models.Model):
     name = models.CharField(max_length=50)
 
     def pictures_path(instance, filename):
-        return instance.name + '/' + filename
+        return instance.id + '/' + filename
 
-    picture1 = models.ImageField(upload_to=pictures_path)
+    picture1 = models.ImageField(upload_to="x")
     text1 = models.CharField(max_length=200)
     picture2 = models.ImageField(upload_to=pictures_path)
     text2 = models.CharField(max_length=200)

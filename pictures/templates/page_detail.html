@@ -1,9 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class="w3-container w3-center">
     <h1>{{ object.name }}</h1>
-    <p>{{ object.text1 }}</p>
-    <p>{{ object.text2 }}</p>
-    <p>{{ object.text3 }}</p>
-    <p>{{ object.text4 }}</p>
+</div>
+
+<div class="w3-row-padding">
+    <div class="w3-third">
+        <div class="w3-card-4">
+            <img src="{{ object.picture1.url }}" class="w3-image">
+            <div class="w3-container w3-center">
+                <p>{{ object.text1 }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="w3-third">
+        <div class="w3-card-4">
+            <img src="{{ object.picture3.url }}" class="w3-image">
+            <div class="w3-container w3-center">
+                <p>{{ object.text3 }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="w3-third">
+        <div class="w3-card-4">
+            <img src="{{ object.picture4.url }}" class="w3-image">
+            <div class="w3-container w3-center">
+                <p>{{ object.text4 }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% comment %} <div class="img-container">
+    <img src="{{ object.picture1.url }}" style="width:100%">
+    <div class="img-text">
+        <p>{{ object.text1 }}</p>
+    </div>
+</div>
+
+<p>{{ object.text2 }}</p>
+<p>{{ object.text3 }}</p>
+<p>{{ object.text4 }}</p> {% endcomment %}
+
 {% endblock %}
