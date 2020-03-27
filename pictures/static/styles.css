@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -7,7 +7,7 @@
     background-color: white;
     text-align: center;
     font-size: small;
-}
+} */
 
 .w3-ul li:last-child {
     border-bottom: 1px solid #ddd;
