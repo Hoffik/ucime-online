@@ -1,1 +1,1 @@
-web: gunicorn dwgroup.wsgi --log-file -
+web: gunicorn ucimeonline.wsgi --log-file -
