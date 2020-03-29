@@ -1,14 +1,8 @@
 "use strict";
 
-document.getElementById("picture1").addEventListener("click", function(){
-    document.getElementById("text1").style.visibility = "visible";
+document.getElementById("parent").addEventListener("click",function(e) {
+    if(e.target && e.target.id) {
+        document.getElementById(String(e.target.id)).getElementsByClassName("w3-container")[0].style.visibility = "visible";
+    }
 });
-document.getElementById("picture2").addEventListener("click", function(){
-    document.getElementById("text2").style.visibility = "visible";
-});
-document.getElementById("picture3").addEventListener("click", function(){
-    document.getElementById("text3").style.visibility = "visible";
-});
-document.getElementById("picture4").addEventListener("click", function(){
-    document.getElementById("text4").style.visibility = "visible";
-});
+

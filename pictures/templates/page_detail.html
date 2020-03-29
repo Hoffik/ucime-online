@@ -10,39 +10,28 @@
     <i class="fas fa-home" style="font-size: 36px; position: absolute; top: 19px; right: 16px;"></i>
 </a>
 
-<div class="w3-row-padding">
-    <div class="w3-quarter">
-        <div class="w3-card-4" id="picture1" style="cursor: pointer;">
-            <img src="{{ object.picture1.url }}" class="w3-image">
-            <div class="w3-container w3-center" id="text1" style="visibility: hidden;">
-                <p>{{ object.text1 }}</p>
+<div id="parent">   <!-- Necessary for mouse click interception -->
+
+    <div class="w3-row-padding">
+        {% for picture in object.pictures.all %}
+
+            <div class="w3-col s2">
+                <div class="w3-card-4" id="{{ forloop.counter }}" style="cursor: pointer;">
+                    <img src="{{ picture.image.url }}" class="w3-image" id="{{ forloop.counter }}">
+                    <div class="w3-container w3-center" id="{{ forloop.counter }}" style="visibility: hidden;">
+                        <p>{{ picture.text }}</p>
+                    </div>
+                </div>
             </div>
-        </div>
+
+            {% if forloop.counter|divisibleby:6 %}
     </div>
-    <div class="w3-quarter">
-        <div class="w3-card-4" id="picture2" style="cursor: pointer;">
-            <img src="{{ object.picture2.url }}" class="w3-image">
-            <div class="w3-container w3-center" id="text2" style="visibility: hidden;">
-                <p>{{ object.text2 }}</p>
-            </div>
-        </div>
+    <div class="w3-row-padding">
+            {% endif %}
+
+        {% endfor %}
     </div>
-    <div class="w3-quarter">
-        <div class="w3-card-4" id="picture3" style="cursor: pointer;">
-            <img src="{{ object.picture3.url }}" class="w3-image">
-            <div class="w3-container w3-center" id="text3" style="visibility: hidden;">
-                <p>{{ object.text3 }}</p>
-            </div>
-        </div>
-    </div>
-    <div class="w3-quarter">
-        <div class="w3-card-4" id="picture4" style="cursor: pointer;">
-            <img src="{{ object.picture4.url }}" class="w3-image">
-            <div class="w3-container w3-center" id="text4" style="visibility: hidden;">
-                <p>{{ object.text4 }}</p>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 {% load static %}

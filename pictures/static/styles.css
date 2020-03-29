@@ -1,3 +1,7 @@
 .w3-ul li:last-child {
     border-bottom: 1px solid #ddd;
 }
+
+.w3-row-padding {
+    padding: 8px;
+}

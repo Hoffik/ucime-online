@@ -11,13 +11,13 @@
         {% for page in object_list %}
         <a href="{{ page.id }}">
             <li class="w3-bar">
-                <img src="{{ page.picture1.url }}" class="w3-bar-item w3-circle w3-hide-small" style="width: 80px; height: 64px; object-fit:cover;">
+                <img src="{{ page.pictures.all.0.image.url }}" class="w3-bar-item w3-circle w3-hide-small" style="width: 80px; height: 64px; object-fit:cover;">
                 <div class="w3-bar-item">
                     <span class="w3-large">{{ page.name }}</span><br>
                     <span>{{ page.description }}</span>
                 </div>
             </li>
-        </a>    
+        </a>
         {% endfor %}
     </ul>
 </div>
