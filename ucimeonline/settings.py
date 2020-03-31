@@ -30,8 +30,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'b8s8usn-z#0*3#8rt^75ee_n$p$e&3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-# DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
-DEBUG = os.getenv('DJANGO_DEBUG') != 'False'
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
+# DEBUG = os.getenv('DJANGO_DEBUG') != 'False'
 
 ALLOWED_HOSTS = ['ucime-online.herokuapp.com', '127.0.0.1']
 
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -125,18 +127,36 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
+# # Static files (CSS, JavaScript, Images)
+# # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# # The absolute path to the directory where collectstatic will collect static files for deployment.
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# The URL to use when referring to static files (where they will be served from)
-STATIC_URL = '/static/'
+# # The URL to use when referring to static files (where they will be served from)
+# STATIC_URL = '/static/'
 
-# Media files (Images, Audio, Video in DB)
-MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/media/')
-MEDIA_URL = '/media/'
+# # Media files (Images, Audio, Video in DB)
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/media/')
+# MEDIA_URL = '/media/'
+
+# Static and Media files stored at AWS S3 external storage
+# (Heroku has Ephemeral filesystem https://devcenter.heroku.com/articles/dynos#ephemeral-filesystem)
+AWS_ACCESS_KEY_ID = os.environ.get('DJANGO_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('DJANGO_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('DJANGO_AWS_STORAGE_BUCKET_NAME')
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_STATIC_LOCATION = 'static'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_STATIC_LOCATION)
+
+AWS_MEDIA_LOCATION = 'media'
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_MEDIA_LOCATION)
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
